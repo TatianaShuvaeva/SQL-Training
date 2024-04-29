@@ -1,0 +1,1 @@
+/usr/bin/pg_dump -U postgres postgres | gzip -9 > postgres-backup.sql.gz
