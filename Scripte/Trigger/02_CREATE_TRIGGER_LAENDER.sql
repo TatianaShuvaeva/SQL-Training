@@ -1,0 +1,13 @@
+CREATE OR ALTER TRIGGER [dbo].[DeleteLand] 
+	ON [dbo].[Laender]
+	INSTEAD OF DELETE
+AS
+BEGIN
+	SET NOCOUNT ON
+	DECLARE @ID2 INT
+	SET @ID2 = (SELECT ID FROM deleted)
+	
+	UPDATE [dbo].[Laender]
+	SET Del = 1, DelDate = GETDATE()
+	WHERE ID = @ID2
+END
